@@ -72,21 +72,9 @@
       height: 100%;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #2D3F54;
-      text-decoration: none;
-      line-height: 1;
-    }
-    .logo sup {
-      font-size: 0.5rem;
-      font-weight: 500;
-      vertical-align: super;
-      letter-spacing: 0;
-    }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 36px; width: auto; display: block; }
+    @media (max-width: 480px) { .logo img { height: 28px; } }
     .header-tabs {
       display: flex; gap: 2px;
       background: #F2F2F0;
@@ -682,7 +670,7 @@
   ══════════════════════════════════════════ -->
   <header class="site-header">
     <div class="header-inner container">
-      <a class="logo" href="#" aria-label="Bomann home">bomann<sup>®</sup></a>
+      <a class="logo" href="#" aria-label="Bomann home"><img src="assets/bomann-blue.png" alt="Bomann" /></a>
       <nav class="header-tabs" role="tablist">
         <button class="tab-btn active" id="tab-lp1" role="tab" aria-selected="true" data-target="lp1">Get Inspired</button>
         <button class="tab-btn"        id="tab-lp2" role="tab" aria-selected="false" data-target="lp2">Lock My Price</button>
