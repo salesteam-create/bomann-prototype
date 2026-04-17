@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bomann — Custom Wardrobes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #1A1A18;
+      background: #F7F7F5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    button { font-family: 'Poppins', sans-serif; cursor: pointer; border: none; background: none; }
+    input  { font-family: 'Poppins', sans-serif; }
+
+    /* ── Layout ── */
+    .container     { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .container--sm { max-width: 760px;  margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #C8A97A;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.75rem 2rem;
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em;
+      border-radius: 3px;
+      transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+      white-space: nowrap; text-decoration: none;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn--primary { background: #2D3F54; color: #fff; }
+    .btn--primary:hover { background: #1E2D3D; }
+    .btn--accent  { background: #C8A97A; color: #fff; }
+    .btn--accent:hover { background: #A88A5A; }
+    .btn--ghost   { background: transparent; color: #2D3F54; border: 1px solid #E5E5E2; }
+    .btn--ghost:hover { background: #F2F2F0; }
+    .btn--ghost-light { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.45); }
+    .btn--ghost-light:hover { background: rgba(255,255,255,0.1); }
+    .btn--full { width: 100%; }
+    .btn--sm   { padding: 0.5rem 1.25rem; font-size: 0.8rem; }
+
+    /* ══════════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════════ */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 72px;
+      background: #fff;
+      border-bottom: 1px solid #E5E5E2;
+      z-index: 100;
+    }
+    .header-inner {
+      height: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #2D3F54;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .logo sup {
+      font-size: 0.5rem;
+      font-weight: 500;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .header-tabs {
+      display: flex; gap: 2px;
+      background: #F2F2F0;
+      border-radius: 3px;
+      padding: 3px;
+    }
+    .tab-btn {
+      padding: 0.45rem 1.25rem;
+      font-size: 0.8rem; font-weight: 500;
+      color: #6B6B68;
+      border-radius: 2px;
+      transition: background 150ms, color 150ms;
+      letter-spacing: 0.01em;
+    }
+    .tab-btn:hover { color: #2D3F54; background: #E5E5E2; }
+    .tab-btn.active { background: #2D3F54; color: #fff; }
+    .tab-btn.active:hover { background: #1E2D3D; }
+
+    /* ══════════════════════════════════════════
+       PAGE SECTIONS
+    ══════════════════════════════════════════ */
+    .page-section { padding-top: 72px; }
+    .page-section.hidden { display: none; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeUp 350ms ease forwards; }
+
+    /* ══════════════════════════════════════════
+       LP1 HERO
+    ══════════════════════════════════════════ */
+    .lp1-hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(30,45,61,0.62), rgba(30,45,61,0.62)),
+        url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-e1764344278699.jpg')
+        center/cover no-repeat;
+      padding: 5rem 2rem 4rem;
+    }
+    .lp1-hero__headline {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .lp1-hero__sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════
+       HOW IT WORKS STRIP
+    ══════════════════════════════════════════ */
+    .how-strip {
+      background: #fff;
+      border-bottom: 1px solid #E5E5E2;
+      padding: 4rem 2rem;
+    }
+    .how-strip__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .how-strip__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #2D3F54;
+      margin-bottom: 2.5rem;
+    }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .how-step { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+    .how-step__num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #2D3F54;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    .how-step__label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2D3F54;
+    }
+    .how-step__desc {
+      font-size: 0.8rem;
+      color: #6B6B68;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       CONFIGURATOR
+    ══════════════════════════════════════════ */
+    .configurator {
+      min-height: 60vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem 2rem;
+      background: #F7F7F5;
+    }
+    .question-panel {
+      width: 100%;
+      max-width: 840px;
+      animation: fadeUp 300ms ease forwards;
+    }
+
+    /* Progress */
+    .progress-bar-wrap { margin-bottom: 2.5rem; }
+    .progress-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6B6B68;
+      margin-bottom: 0.6rem;
+    }
+    .progress-track { height: 2px; background: #E5E5E2; border-radius: 99px; overflow: hidden; }
+    .progress-fill  { height: 100%; background: #2D3F54; border-radius: 99px; transition: width 400ms ease; }
+
+    /* Question heading */
+    .question-heading {
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #2D3F54;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* Tile grid */
+    .tile-grid         { display: grid; gap: 1rem; margin-bottom: 2rem; }
+    .tile-grid--3      { grid-template-columns: repeat(3, 1fr); }
+    .tile-grid--4      { grid-template-columns: repeat(4, 1fr); }
+    .tile-grid--3-short { grid-template-columns: repeat(3, 1fr); }
+
+    /* Visual tile */
+    .v-tile {
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 150ms, box-shadow 150ms;
+      outline: none;
+    }
+    .v-tile:focus-visible { outline: 2px solid #C8A97A; outline-offset: 2px; }
+    .v-tile--selected { border-color: #C8A97A !important; }
+
+    .v-tile__bg {
+      width: 100%; height: 100%;
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    /* Dark overlay on all tiles */
+    .v-tile__bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 100%);
+    }
+
+    .v-tile__content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1rem 1rem 1.1rem;
+    }
+    .v-tile__label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+    .v-tile__desc {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.4;
+    }
+
+    /* Checkmark badge */
+    .v-tile__check {
+      position: absolute;
+      top: 0.6rem; right: 0.6rem;
+      z-index: 2;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #C8A97A;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity 150ms;
+    }
+    .v-tile__check::after {
+      content: '';
+      display: block;
+      width: 6px; height: 10px;
+      border: 2px solid #fff;
+      border-top: none; border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+    .v-tile--selected .v-tile__check { opacity: 1; }
+
+    /* Tile height by question */
+    .tile-h-tall   { height: 220px; }
+    .tile-h-medium { height: 190px; }
+    .tile-h-short  { height: 130px; }
+
+    /* Specific tile backgrounds */
+    .tile-sliding    { background: url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-e1764344278699.jpg') center/cover; }
+    .tile-hinged     { background: url('https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1.jpeg') center/cover; }
+    .tile-glass      { background: url('https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp') center/cover; }
+    .tile-white-matte{ background: #F0EDE8; }
+    .tile-oak        { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp') center/cover; }
+    .tile-dark-grey  { background: #2A2E34; }
+    .tile-mirror     { background: linear-gradient(135deg, #c8c8c8 0%, #e8e8e8 30%, #a8a8a8 55%, #d8d8d8 80%, #b0b0b0 100%); }
+    .tile-basic      { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp') center top/cover; }
+    .tile-hanging    { background: url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-864x1000.jpg') center/cover; }
+    .tile-full       { background: url('https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp') center/cover; }
+    .tile-small      { background: #3D5268; }
+    .tile-medium     { background: #2D3F54; }
+    .tile-large      { background: #1E2D3D; }
+
+    /* Nav row */
+    .question-nav { display: flex; align-items: center; gap: 1rem; }
+
+    /* ══════════════════════════════════════════
+       RESULTS SECTION
+    ══════════════════════════════════════════ */
+    .results-section { padding: 5rem 0; background: #F7F7F5; }
+    .results-header  { text-align: center; margin-bottom: 3rem; }
+    .results-title {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #2D3F54;
+      margin-bottom: 0.75rem;
+    }
+    .results-sub { font-size: 0.95rem; color: #6B6B68; max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.7; }
+
+    .result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+
+    .result-card {
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 250ms;
+    }
+    .result-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); }
+    .result-card--best { border: 2px solid #C8A97A; }
+
+    .result-card__img {
+      position: relative;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+    }
+    .result-card__img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
+    }
+
+    .best-badge {
+      position: absolute;
+      top: 0.75rem; left: 0.75rem;
+      z-index: 1;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #C8A97A;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .result-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .result-card__name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #2D3F54;
+      margin-bottom: 0.2rem;
+    }
+    .result-card__tagline { font-size: 0.8rem; color: #C8A97A; font-weight: 500; margin-bottom: 1rem; }
+    .result-card__desc   { font-size: 0.85rem; color: #6B6B68; line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+    .result-card__price-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6B6B68;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .result-card__price {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2D3F54;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .results-restart { text-align: center; }
+
+    /* ══════════════════════════════════════════
+       TRUST STRIP
+    ══════════════════════════════════════════ */
+    .trust-strip { background: #2D3F54; padding: 3.5rem 2rem; }
+    .trust-stats {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; text-align: center;
+    }
+    .trust-stat__num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #C8A97A;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .trust-stat__label { font-size: 0.8rem; color: rgba(255,255,255,0.65); letter-spacing: 0.02em; }
+
+    /* ══════════════════════════════════════════
+       LP2 HERO
+    ══════════════════════════════════════════ */
+    .lp2-hero {
+      position: relative;
+      min-height: 55vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(30,45,61,0.65), rgba(30,45,61,0.65)),
+        url('https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp')
+        center/cover no-repeat;
+      padding: 5rem 2rem 4rem;
+    }
+    .lp2-hero__headline {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .lp2-hero__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════════
+       LP2 BODY — two-column layout
+    ══════════════════════════════════════════ */
+    .lp2-body { padding: 4rem 0 6rem; background: #F7F7F5; }
+    .lp2-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .lp2-col-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #2D3F54;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Package selector cards */
+    .pkg-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .pkg-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 3px;
+      cursor: pointer; text-align: left; width: 100%;
+      transition: border-color 150ms;
+    }
+    .pkg-card:hover { border-color: #3D5268; }
+    .pkg-card.selected { border: 2px solid #2D3F54; }
+    .pkg-card__radio {
+      flex-shrink: 0; width: 16px; height: 16px;
+      border-radius: 50%; border: 2px solid #AEAEAD;
+      transition: border-color 150ms, background 150ms;
+      position: relative;
+    }
+    .pkg-card.selected .pkg-card__radio { border-color: #2D3F54; background: #2D3F54; }
+    .pkg-card.selected .pkg-card__radio::after {
+      content: '';
+      position: absolute; inset: 3px;
+      border-radius: 50%; background: #fff;
+    }
+    .pkg-card__body { flex: 1; }
+    .pkg-card__name { font-size: 0.9rem; font-weight: 600; color: #2D3F54; margin-bottom: 0.1rem; }
+    .pkg-card__tagline { font-size: 0.78rem; color: #6B6B68; }
+    .pkg-card__price { font-size: 0.82rem; font-weight: 600; color: #2D3F54; white-space: nowrap; flex-shrink: 0; }
+
+    /* Price summary */
+    .price-summary {
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 3px;
+      padding: 1.75rem;
+    }
+    .price-summary__row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #E5E5E2;
+      font-size: 0.9rem;
+    }
+    .price-summary__row:last-child { border-bottom: none; }
+    .price-summary__label { color: #6B6B68; }
+    .price-summary__value { font-weight: 600; color: #2D3F54; }
+    .price-summary__value--accent { color: #A88A5A; font-size: 1.1rem; }
+    .price-summary__note { font-size: 0.75rem; color: #AEAEAD; margin-top: 0.25rem; display: block; text-align: right; }
+
+    /* Form */
+    .form-panel {
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 3px;
+      padding: 2rem;
+    }
+    .form-fields { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem; }
+    .form-field  { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label  { font-size: 0.82rem; font-weight: 500; color: #2D3F54; }
+    .form-input  {
+      padding: 0.7rem 0.9rem;
+      font-size: 0.95rem; color: #1A1A18;
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+    .form-input:focus { border-color: #2D3F54; box-shadow: 0 0 0 3px rgba(45,63,84,0.08); }
+    .form-input::placeholder { color: #AEAEAD; }
+    .form-input.error { border-color: #C0392B; }
+    .form-error { font-size: 0.75rem; color: #C0392B; min-height: 1em; }
+
+    /* ══════════════════════════════════════════
+       MODALS
+    ══════════════════════════════════════════ */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(30,45,61,0.72);
+      z-index: 190;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    .overlay.hidden { display: none; }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal {
+      background: #fff;
+      border-radius: 5px;
+      padding: 2.5rem;
+      max-width: 460px; width: 100%;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+      max-height: 92vh; overflow-y: auto;
+      animation: modalIn 250ms ease forwards;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1.25rem;
+      font-size: 1.4rem; color: #6B6B68; line-height: 1;
+      transition: color 150ms;
+    }
+    .modal-close:hover { color: #2D3F54; }
+    .modal-headline {
+      font-size: 1.35rem; font-weight: 600;
+      letter-spacing: -0.01em; color: #2D3F54;
+      margin-bottom: 0.5rem;
+    }
+    .modal-sub { font-size: 0.85rem; color: #6B6B68; line-height: 1.65; margin-bottom: 1.5rem; }
+
+    /* Deposit summary box inside modal */
+    .modal-summary-box {
+      background: #F7F7F5;
+      border-radius: 3px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .modal-summary-box__pkg { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B68; margin-bottom: 0.2rem; }
+    .modal-summary-box__name { font-size: 1rem; font-weight: 600; color: #2D3F54; margin-bottom: 1rem; }
+    .modal-summary-box__amt-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B68; margin-bottom: 0.2rem; }
+    .modal-summary-box__amt { font-size: 1.6rem; font-weight: 700; color: #2D3F54; letter-spacing: -0.02em; }
+
+    .modal-card-fields { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.75rem; }
+    .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .modal-disclaimer { font-size: 0.72rem; color: #AEAEAD; text-align: center; margin-bottom: 1.25rem; }
+
+    /* Confirmation modal */
+    .confirm-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: #3A7D5E;
+      color: #fff;
+      font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .modal--confirm { text-align: center; }
+    .confirm-summary {
+      background: #F7F7F5;
+      border-radius: 3px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      text-align: left;
+    }
+    .confirm-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #E5E5E2;
+    }
+    .confirm-row:last-child { border-bottom: none; }
+    .confirm-row__label { color: #6B6B68; }
+    .confirm-row__value { font-weight: 600; color: #2D3F54; }
+    .confirm-note { font-size: 0.82rem; color: #6B6B68; line-height: 1.65; margin-bottom: 0.4rem; }
+    .hubspot-banner {
+      background: #F2F2F0;
+      border-left: 3px solid #2D3F54;
+      border-radius: 2px;
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem; color: #6B6B68;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .lp2-layout { grid-template-columns: 1fr; }
+      .result-cards { grid-template-columns: 1fr; }
+      .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .how-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+      .tile-grid--4 { grid-template-columns: repeat(2, 1fr); }
+      .tile-grid--3 { grid-template-columns: repeat(2, 1fr); }
+      .tile-grid--3 .v-tile:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; width: 100%; }
+      .tab-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+    }
+    @media (max-width: 480px) {
+      .tile-grid--4 { grid-template-columns: 1fr 1fr; }
+      .trust-stats { grid-template-columns: repeat(2, 1fr); }
+      .modal { padding: 1.75rem 1.25rem; }
+      .card-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="#" aria-label="Bomann home">bomann<sup>®</sup></a>
+      <nav class="header-tabs" role="tablist">
+        <button class="tab-btn active" id="tab-lp1" role="tab" aria-selected="true" data-target="lp1">Get Inspired</button>
+        <button class="tab-btn"        id="tab-lp2" role="tab" aria-selected="false" data-target="lp2">Lock My Price</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       LP1 — GET INSPIRED
+  ══════════════════════════════════════════ -->
+  <main id="section-lp1" class="page-section" role="tabpanel">
+
+    <!-- Hero -->
+    <section class="lp1-hero">
+      <div class="container--sm">
+        <p class="eyebrow">Configurator</p>
+        <h1 class="lp1-hero__headline">Find Your Perfect Wardrobe</h1>
+        <p class="lp1-hero__sub">Answer four quick questions and we'll recommend the right solution for your space — based on thousands of completed Bomann projects.</p>
+        <button class="btn btn--accent" id="lp1-start-btn">Start Now</button>
+      </div>
+      <p class="hero-scroll-hint">↓ How it works</p>
+    </section>
+
+    <!-- How It Works strip -->
+    <section class="how-strip" id="how-strip">
+      <div class="how-strip__inner">
+        <p class="how-strip__title">How It Works</p>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step__num">01</div>
+            <p class="how-step__label">Answer 4 Questions</p>
+            <p class="how-step__desc">Tell us about your preferred door style, finish, interior fittings, and wardrobe size.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">02</div>
+            <p class="how-step__label">Get Matched</p>
+            <p class="how-step__desc">We rank all Bomann packages against your answers and surface the three best fits.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step__num">03</div>
+            <p class="how-step__label">Lock Your Price</p>
+            <p class="how-step__desc">Secure your recommended package with a 20% deposit and a Bomann advisor will be in touch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurator (question flow injected by JS) -->
+    <section class="configurator" id="configurator" style="display:none;" aria-live="polite">
+      <!-- Injected by JS -->
+    </section>
+
+    <!-- Results (injected by JS) -->
+    <section class="results-section" id="results-section" style="display:none;">
+      <!-- Injected by JS -->
+    </section>
+
+    <!-- Trust strip (always visible at bottom of LP1) -->
+    <section class="trust-strip">
+      <div class="trust-stats">
+        <div class="trust-stat">
+          <p class="trust-stat__num">14+</p>
+          <p class="trust-stat__label">Years of experience</p>
+        </div>
+        <div class="trust-stat">
+          <p class="trust-stat__num">16+</p>
+          <p class="trust-stat__label">Dealers across Norway</p>
+        </div>
+        <div class="trust-stat">
+          <p class="trust-stat__num">13 362+</p>
+          <p class="trust-stat__label">Solutions delivered</p>
+        </div>
+        <div class="trust-stat">
+          <p class="trust-stat__num">99%</p>
+          <p class="trust-stat__label">Satisfied customers</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       LP2 — LOCK MY PRICE
+  ══════════════════════════════════════════ -->
+  <main id="section-lp2" class="page-section hidden" role="tabpanel">
+
+    <!-- Hero -->
+    <section class="lp2-hero">
+      <div class="container--sm">
+        <p class="eyebrow">Price Lock</p>
+        <h1 class="lp2-hero__headline">Lock In Your Price Today</h1>
+        <p class="lp2-hero__sub">Secure your Bomann wardrobe with a 20% deposit. No surprises — your quoted price is held while we prepare your personalised offer.</p>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="lp2-body">
+      <div class="container">
+        <div class="lp2-layout">
+
+          <!-- Left col: package selector + price summary -->
+          <div>
+            <p class="lp2-col-title">Select Your Package</p>
+            <div class="pkg-list" id="pkg-list"><!-- Injected by JS --></div>
+
+            <p class="lp2-col-title">Price Summary</p>
+            <div class="price-summary" id="price-summary"><!-- Injected by JS --></div>
+          </div>
+
+          <!-- Right col: form -->
+          <div class="form-panel">
+            <p class="lp2-col-title">Your Details</p>
+            <form id="lp2-form" novalidate>
+              <div class="form-fields">
+                <div class="form-field">
+                  <label class="form-label" for="f-name">Full Name</label>
+                  <input class="form-input" id="f-name" type="text" placeholder="Your name" required />
+                  <span class="form-error" id="e-name"></span>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="f-email">Email Address</label>
+                  <input class="form-input" id="f-email" type="email" placeholder="your@email.com" required />
+                  <span class="form-error" id="e-email"></span>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="f-phone">Phone Number</label>
+                  <input class="form-input" id="f-phone" type="tel" placeholder="+47 000 00 000" required />
+                  <span class="form-error" id="e-phone"></span>
+                </div>
+              </div>
+              <button type="submit" class="btn btn--primary btn--full">Lock My Price</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       PAYMENT MODAL
+  ══════════════════════════════════════════ -->
+  <div class="overlay hidden" id="payment-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-headline">
+    <div class="modal">
+      <button class="modal-close" id="pm-close" aria-label="Close">&times;</button>
+      <h2 class="modal-headline" id="pm-headline">Confirm Your Deposit</h2>
+      <p class="modal-sub">This is a 20% deposit to secure your quoted price range. A Bomann advisor will contact you to confirm measurements and finalise your order.</p>
+      <div class="modal-summary-box" id="pm-summary"><!-- Injected by JS --></div>
+      <div class="modal-card-fields">
+        <div class="form-field">
+          <label class="form-label" for="cc-num">Card Number</label>
+          <input class="form-input" id="cc-num" type="text" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="cc-number" />
+        </div>
+        <div class="card-row">
+          <div class="form-field">
+            <label class="form-label" for="cc-exp">Expiry</label>
+            <input class="form-input" id="cc-exp" type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="cc-cvc">CVC</label>
+            <input class="form-input" id="cc-cvc" type="text" placeholder="000" maxlength="3" autocomplete="cc-csc" />
+          </div>
+        </div>
+      </div>
+      <p class="modal-disclaimer">Simulated payment — no real charge will be made.</p>
+      <button class="btn btn--primary btn--full" id="pm-confirm">Confirm Deposit</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CONFIRMATION MODAL
+  ══════════════════════════════════════════ -->
+  <div class="overlay hidden" id="confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="cf-headline">
+    <div class="modal modal--confirm">
+      <div class="confirm-icon">&#10003;</div>
+      <h2 class="modal-headline" id="cf-headline">You're Confirmed</h2>
+      <p class="modal-sub">Your deposit has been received and your price is locked.</p>
+      <div class="confirm-summary" id="cf-summary"><!-- Injected by JS --></div>
+      <p class="confirm-note">A contract and price confirmation will be sent to your email address.</p>
+      <p class="confirm-note">A Bomann advisor will be in touch within 1 business day to discuss measurements and next steps.</p>
+      <div class="hubspot-banner" id="cf-hubspot"></div>
+      <button class="btn btn--primary" id="cf-close">Done</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       INLINE DATA + LOGIC
+  ══════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Content data (from content.json) ── */
+    const PACKAGES = [
+      {
+        id: 'essentials', name: 'Essentials',
+        tagline: 'Clean, functional storage done right.',
+        description: 'A straightforward wardrobe with quality Norwegian craftsmanship. Ideal for smaller spaces where function comes first.',
+        price_min: 12000, price_max: 18000, currency: 'kr',
+        img: 'https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1.jpeg',
+        scores: {
+          door_style:  { sliding: 2, hinged: 3, glass: 0 },
+          finish:      { white_matte: 3, oak_wood: 2, dark_grey: 1, mirror: 1 },
+          fittings:    { basic: 3, hanging: 2, full: 0 },
+          size:        { small: 3, medium: 2, large: 0 }
+        }
+      },
+      {
+        id: 'classic', name: 'Classic',
+        tagline: 'The Bomann standard. Timeless and precise.',
+        description: 'Our most popular solution. Combines a refined exterior with a well-organised interior that works for everyday life.',
+        price_min: 22000, price_max: 32000, currency: 'kr',
+        img: 'https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-e1764344278699.jpg',
+        scores: {
+          door_style:  { sliding: 3, hinged: 3, glass: 1 },
+          finish:      { white_matte: 3, oak_wood: 3, dark_grey: 2, mirror: 2 },
+          fittings:    { basic: 1, hanging: 3, full: 2 },
+          size:        { small: 1, medium: 3, large: 2 }
+        }
+      },
+      {
+        id: 'signature', name: 'Signature',
+        tagline: 'A statement piece. Built for the detail-oriented.',
+        description: 'For larger spaces and those who want the full Bomann experience — complete interior organisation with a premium exterior finish.',
+        price_min: 38000, price_max: 55000, currency: 'kr',
+        img: 'https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp',
+        scores: {
+          door_style:  { sliding: 3, hinged: 2, glass: 2 },
+          finish:      { white_matte: 2, oak_wood: 2, dark_grey: 3, mirror: 3 },
+          fittings:    { basic: 0, hanging: 2, full: 3 },
+          size:        { small: 0, medium: 2, large: 3 }
+        }
+      },
+      {
+        id: 'glass_studio', name: 'Glass Studio',
+        tagline: 'Architecture, not just storage.',
+        description: 'Our glass-door collection transforms any room. Frameless precision, full interior customisation, and unmistakable presence.',
+        price_min: 45000, price_max: 70000, currency: 'kr',
+        img: 'https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp',
+        scores: {
+          door_style:  { sliding: 2, hinged: 1, glass: 3 },
+          finish:      { white_matte: 2, oak_wood: 2, dark_grey: 3, mirror: 3 },
+          fittings:    { basic: 1, hanging: 2, full: 3 },
+          size:        { small: 1, medium: 2, large: 3 }
+        }
+      }
+    ];
+
+    const QUESTIONS = [
+      {
+        id: 'door_style',
+        question: 'What door style do you prefer?',
+        cols: 3,
+        height: 'tall',
+        options: [
+          { value: 'sliding', label: 'Sliding',  desc: 'Space-saving, modern look',     bgClass: 'tile-sliding' },
+          { value: 'hinged',  label: 'Hinged',   desc: 'Classic, full-access opening',  bgClass: 'tile-hinged'  },
+          { value: 'glass',   label: 'Glass',    desc: 'Open, light, architectural',    bgClass: 'tile-glass'   }
+        ]
+      },
+      {
+        id: 'finish',
+        question: 'Which finish suits your space?',
+        cols: 4,
+        height: 'medium',
+        options: [
+          { value: 'white_matte', label: 'White Matte', desc: 'Clean, timeless, versatile',        bgClass: 'tile-white-matte' },
+          { value: 'oak_wood',    label: 'Oak Wood',    desc: 'Warm, natural, Scandinavian',        bgClass: 'tile-oak'         },
+          { value: 'dark_grey',   label: 'Dark Grey',   desc: 'Bold, contemporary, striking',       bgClass: 'tile-dark-grey'   },
+          { value: 'mirror',      label: 'Mirror',      desc: 'Light-expanding, minimal',           bgClass: 'tile-mirror'      }
+        ]
+      },
+      {
+        id: 'fittings',
+        question: 'What interior fittings do you need?',
+        cols: 3,
+        height: 'tall',
+        options: [
+          { value: 'basic',   label: 'Basic Shelving',    desc: 'Shelves and simple rail',              bgClass: 'tile-basic'   },
+          { value: 'hanging', label: 'Hanging + Shelves', desc: 'Full-length hanging with shelves',     bgClass: 'tile-hanging' },
+          { value: 'full',    label: 'Full Fitted',       desc: 'Drawers, shelves, and hanging',        bgClass: 'tile-full'    }
+        ]
+      },
+      {
+        id: 'size',
+        question: 'What size are you working with?',
+        cols: 3,
+        height: 'short',
+        options: [
+          { value: 'small',  label: 'Small',  desc: '100 – 150 cm wide', bgClass: 'tile-small'  },
+          { value: 'medium', label: 'Medium', desc: '150 – 200 cm wide', bgClass: 'tile-medium' },
+          { value: 'large',  label: 'Large',  desc: '200 – 300 cm wide', bgClass: 'tile-large'  }
+        ]
+      }
+    ];
+
+    /* ── State ── */
+    let answers       = {};
+    let currentStep   = 0;
+    let selectedPkgId = PACKAGES[0].id;
+    let formData      = {};
+
+    /* ── Helpers ── */
+    function fmt(n) {
+      // Norwegian: space as thousands separator
+      return n.toLocaleString('nb-NO');
+    }
+    function fmtPrice(min, max, cur) {
+      return cur + '\u00a0' + fmt(min) + '\u00a0–\u00a0' + fmt(max);
+    }
+    function getPkg(id) { return PACKAGES.find(p => p.id === id); }
+    function calcDeposit(pkg) {
+      return Math.round((pkg.price_min + pkg.price_max) / 2 * 0.20);
+    }
+    function esc(str) {
+      return String(str)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function genRef() {
+      return 'BMN-' + Math.random().toString(36).substring(2,7).toUpperCase();
+    }
+
+    /* ════════════════════════════════════════
+       TAB SWITCHING
+    ════════════════════════════════════════ */
+    function switchTab(target) {
+      var lp1 = document.getElementById('section-lp1');
+      var lp2 = document.getElementById('section-lp2');
+      var t1  = document.getElementById('tab-lp1');
+      var t2  = document.getElementById('tab-lp2');
+
+      if (target === 'lp1') {
+        lp2.classList.add('hidden');
+        lp1.classList.remove('hidden');
+        lp1.classList.add('fade-in');
+        setTimeout(function(){ lp1.classList.remove('fade-in'); }, 400);
+        t1.classList.add('active');    t1.setAttribute('aria-selected','true');
+        t2.classList.remove('active'); t2.setAttribute('aria-selected','false');
+      } else {
+        lp1.classList.add('hidden');
+        lp2.classList.remove('hidden');
+        lp2.classList.add('fade-in');
+        setTimeout(function(){ lp2.classList.remove('fade-in'); }, 400);
+        t2.classList.add('active');    t2.setAttribute('aria-selected','true');
+        t1.classList.remove('active'); t1.setAttribute('aria-selected','false');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ switchTab(btn.dataset.target); });
+    });
+
+    /* ════════════════════════════════════════
+       LP1 — CONFIGURATOR
+    ════════════════════════════════════════ */
+    var startBtn      = document.getElementById('lp1-start-btn');
+    var howStrip      = document.getElementById('how-strip');
+    var configurator  = document.getElementById('configurator');
+    var resultsSection= document.getElementById('results-section');
+
+    startBtn.addEventListener('click', function(){
+      startBtn.style.display = 'none';
+      howStrip.style.display = 'none';
+      answers = {};
+      currentStep = 1;
+      configurator.style.display = 'flex';
+      renderQuestion(currentStep);
+      configurator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function heightClass(h) {
+      if (h === 'tall')   return 'tile-h-tall';
+      if (h === 'medium') return 'tile-h-medium';
+      if (h === 'short')  return 'tile-h-short';
+      return 'tile-h-medium';
+    }
+
+    function renderQuestion(step) {
+      resultsSection.style.display = 'none';
+      resultsSection.innerHTML = '';
+
+      var q     = QUESTIONS[step - 1];
+      var total = QUESTIONS.length;
+      var pct   = Math.round(((step - 1) / total) * 100);
+      var hClass= heightClass(q.height);
+      var colClass = q.cols === 4 ? 'tile-grid--4' : (q.height === 'short' ? 'tile-grid--3-short' : 'tile-grid--3');
+
+      var tilesHtml = q.options.map(function(opt){
+        var sel = answers[q.id] === opt.value;
+        return '<button class="v-tile ' + hClass + (sel ? ' v-tile--selected' : '') + '"' +
+               ' data-q="' + q.id + '" data-v="' + opt.value + '"' +
+               ' type="button" aria-pressed="' + sel + '">' +
+               '<div class="v-tile__bg ' + opt.bgClass + '"></div>' +
+               '<div class="v-tile__check" aria-hidden="true"></div>' +
+               '<div class="v-tile__content">' +
+               '<span class="v-tile__label">' + opt.label + '</span>' +
+               '<span class="v-tile__desc">' + opt.desc + '</span>' +
+               '</div></button>';
+      }).join('');
+
+      configurator.innerHTML =
+        '<div class="question-panel container">' +
+          '<div class="progress-bar-wrap">' +
+            '<p class="progress-label">Step ' + step + ' of ' + total + '</p>' +
+            '<div class="progress-track" role="progressbar" aria-valuenow="' + step + '" aria-valuemin="1" aria-valuemax="' + total + '">' +
+              '<div class="progress-fill" style="width:' + pct + '%"></div>' +
+            '</div>' +
+          '</div>' +
+          '<h2 class="question-heading">' + q.question + '</h2>' +
+          '<div class="tile-grid ' + colClass + '">' + tilesHtml + '</div>' +
+          '<div class="question-nav">' +
+            (step > 1 ? '<button class="btn btn--ghost" id="q-back">Back</button>' : '') +
+            '<button class="btn btn--primary" id="q-next"' + (answers[q.id] ? '' : ' disabled') + '>' +
+              (step < total ? 'Next' : 'See Recommendations') +
+            '</button>' +
+          '</div>' +
+        '</div>';
+
+      // Tile click
+      configurator.querySelectorAll('.v-tile').forEach(function(tile){
+        tile.addEventListener('click', function(){
+          var qId = tile.dataset.q;
+          var val = tile.dataset.v;
+          answers[qId] = val;
+          configurator.querySelectorAll('.v-tile').forEach(function(t){
+            var s = t.dataset.v === val;
+            t.classList.toggle('v-tile--selected', s);
+            t.setAttribute('aria-pressed', s);
+          });
+          var nextBtn = document.getElementById('q-next');
+          if (nextBtn) nextBtn.disabled = false;
+        });
+      });
+
+      var backBtn = document.getElementById('q-back');
+      if (backBtn) {
+        backBtn.addEventListener('click', function(){
+          currentStep--;
+          renderQuestion(currentStep);
+        });
+      }
+
+      var nextBtn = document.getElementById('q-next');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(){
+          if (!answers[q.id]) return;
+          if (step < total) {
+            currentStep++;
+            renderQuestion(currentStep);
+          } else {
+            showResults();
+          }
+        });
+      }
+    }
+
+    /* ── Scoring ── */
+    function scorePackages() {
+      return PACKAGES.map(function(pkg){
+        var score = 0;
+        Object.keys(answers).forEach(function(qId){
+          var s = pkg.scores[qId];
+          if (s && s[answers[qId]] !== undefined) score += s[answers[qId]];
+        });
+        return Object.assign({}, pkg, { score: score });
+      }).sort(function(a, b){ return b.score - a.score; });
+    }
+
+    function showResults() {
+      configurator.style.display = 'none';
+      configurator.innerHTML = '';
+
+      var ranked = scorePackages().slice(0, 3);
+
+      var cardsHtml = ranked.map(function(pkg, i){
+        var isBest = i === 0;
+        return '<article class="result-card' + (isBest ? ' result-card--best' : '') + '">' +
+          '<div class="result-card__img" style="background-image:url(\'' + pkg.img + '\')">' +
+            (isBest ? '<span class="best-badge">Best Match</span>' : '') +
+          '</div>' +
+          '<div class="result-card__body">' +
+            '<p class="result-card__name">' + pkg.name + '</p>' +
+            '<p class="result-card__tagline">' + pkg.tagline + '</p>' +
+            '<p class="result-card__desc">' + pkg.description + '</p>' +
+            '<span class="result-card__price-label">Price Range</span>' +
+            '<p class="result-card__price">' + fmtPrice(pkg.price_min, pkg.price_max, pkg.currency) + '</p>' +
+            '<button class="btn btn--primary btn--full" data-pkg="' + pkg.id + '">Lock This Price \u2192</button>' +
+          '</div></article>';
+      }).join('');
+
+      resultsSection.innerHTML =
+        '<div class="container">' +
+          '<div class="results-header">' +
+            '<p class="eyebrow">Your Results</p>' +
+            '<h2 class="results-title">Your Recommendations</h2>' +
+            '<p class="results-sub">Based on your answers, here are the Bomann solutions that best match your needs.</p>' +
+          '</div>' +
+          '<div class="result-cards">' + cardsHtml + '</div>' +
+          '<div class="results-restart">' +
+            '<button class="btn btn--ghost" id="restart-btn">Start Over</button>' +
+          '</div>' +
+        '</div>';
+
+      resultsSection.style.display = '';
+
+      // Lock This Price buttons
+      resultsSection.querySelectorAll('[data-pkg]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          selectedPkgId = btn.dataset.pkg;
+          switchTab('lp2');
+          renderPkgList();
+          renderPriceSummary();
+          setTimeout(function(){
+            document.getElementById('pkg-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 350);
+        });
+      });
+
+      document.getElementById('restart-btn').addEventListener('click', resetConfigurator);
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetConfigurator() {
+      answers = {};
+      currentStep = 0;
+      configurator.style.display = 'none';
+      configurator.innerHTML = '';
+      resultsSection.style.display = 'none';
+      resultsSection.innerHTML = '';
+      howStrip.style.display = '';
+      startBtn.style.display = '';
+      document.getElementById('section-lp1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ════════════════════════════════════════
+       LP2 — PACKAGE LIST
+    ════════════════════════════════════════ */
+    function renderPkgList() {
+      var html = PACKAGES.map(function(pkg){
+        var sel = pkg.id === selectedPkgId;
+        return '<button class="pkg-card' + (sel ? ' selected' : '') + '" data-pkg="' + pkg.id + '" type="button" aria-pressed="' + sel + '">' +
+          '<div class="pkg-card__radio"></div>' +
+          '<div class="pkg-card__body">' +
+            '<p class="pkg-card__name">' + pkg.name + '</p>' +
+            '<p class="pkg-card__tagline">' + pkg.tagline + '</p>' +
+          '</div>' +
+          '<span class="pkg-card__price">' + pkg.currency + '\u00a0' + fmt(pkg.price_min) + '+</span>' +
+          '</button>';
+      }).join('');
+      var list = document.getElementById('pkg-list');
+      list.innerHTML = html;
+      list.querySelectorAll('.pkg-card').forEach(function(card){
+        card.addEventListener('click', function(){
+          selectedPkgId = card.dataset.pkg;
+          list.querySelectorAll('.pkg-card').forEach(function(c){
+            var s = c.dataset.pkg === selectedPkgId;
+            c.classList.toggle('selected', s);
+            c.setAttribute('aria-pressed', s);
+          });
+          renderPriceSummary();
+        });
+      });
+    }
+
+    function renderPriceSummary() {
+      var pkg     = getPkg(selectedPkgId);
+      var deposit = calcDeposit(pkg);
+      var mid     = (pkg.price_min + pkg.price_max) / 2;
+      document.getElementById('price-summary').innerHTML =
+        '<div class="price-summary__row">' +
+          '<span class="price-summary__label">Package</span>' +
+          '<span class="price-summary__value">' + pkg.name + '</span>' +
+        '</div>' +
+        '<div class="price-summary__row">' +
+          '<span class="price-summary__label">Price Range</span>' +
+          '<span class="price-summary__value">' + fmtPrice(pkg.price_min, pkg.price_max, pkg.currency) + '</span>' +
+        '</div>' +
+        '<div class="price-summary__row">' +
+          '<span class="price-summary__label">20% Deposit</span>' +
+          '<span class="price-summary__value price-summary__value--accent">' + pkg.currency + '\u00a0' + fmt(deposit) + '</span>' +
+        '</div>';
+    }
+
+    /* ════════════════════════════════════════
+       LP2 — FORM
+    ════════════════════════════════════════ */
+    document.getElementById('lp2-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!validateForm()) return;
+      formData = {
+        name:  document.getElementById('f-name').value.trim(),
+        email: document.getElementById('f-email').value.trim(),
+        phone: document.getElementById('f-phone').value.trim()
+      };
+      openPaymentModal();
+    });
+
+    function validateForm() {
+      var ok = true;
+      var fields = [
+        { id:'f-name',  err:'e-name',  label:'Full Name',     type:'text'  },
+        { id:'f-email', err:'e-email', label:'Email Address', type:'email' },
+        { id:'f-phone', err:'e-phone', label:'Phone Number',  type:'text'  }
+      ];
+      fields.forEach(function(f){
+        var inp = document.getElementById(f.id);
+        var err = document.getElementById(f.err);
+        inp.classList.remove('error');
+        err.textContent = '';
+        if (!inp.value.trim()) {
+          inp.classList.add('error');
+          err.textContent = f.label + ' is required.';
+          ok = false;
+        } else if (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim())) {
+          inp.classList.add('error');
+          err.textContent = 'Please enter a valid email address.';
+          ok = false;
+        }
+      });
+      if (!ok) { var first = document.querySelector('.form-input.error'); if(first) first.focus(); }
+      return ok;
+    }
+
+    /* ════════════════════════════════════════
+       PAYMENT MODAL
+    ════════════════════════════════════════ */
+    var paymentOverlay = document.getElementById('payment-overlay');
+
+    function openPaymentModal() {
+      var pkg     = getPkg(selectedPkgId);
+      var deposit = calcDeposit(pkg);
+      document.getElementById('pm-summary').innerHTML =
+        '<p class="modal-summary-box__pkg">Package</p>' +
+        '<p class="modal-summary-box__name">' + pkg.name + '</p>' +
+        '<p class="modal-summary-box__amt-label">Deposit Amount</p>' +
+        '<p class="modal-summary-box__amt">' + pkg.currency + '\u00a0' + fmt(deposit) + '</p>';
+      document.getElementById('cc-num').value = '';
+      document.getElementById('cc-exp').value = '';
+      document.getElementById('cc-cvc').value = '';
+      paymentOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('cc-num').focus();
+    }
+
+    function closePaymentModal() {
+      paymentOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('pm-close').addEventListener('click', closePaymentModal);
+    paymentOverlay.addEventListener('click', function(e){ if(e.target===paymentOverlay) closePaymentModal(); });
+
+    // Card field formatting
+    document.getElementById('cc-num').addEventListener('input', function(){
+      var v = this.value.replace(/\D/g,'').substring(0,16);
+      this.value = v.replace(/(.{4})/g,'$1 ').trim();
+    });
+    document.getElementById('cc-exp').addEventListener('input', function(){
+      var v = this.value.replace(/\D/g,'').substring(0,4);
+      if (v.length >= 3) v = v.substring(0,2) + ' / ' + v.substring(2);
+      this.value = v;
+    });
+
+    document.getElementById('pm-confirm').addEventListener('click', function(){
+      closePaymentModal();
+      showConfirmation();
+    });
+
+    /* ════════════════════════════════════════
+       CONFIRMATION MODAL
+    ════════════════════════════════════════ */
+    var confirmOverlay = document.getElementById('confirm-overlay');
+
+    function showConfirmation() {
+      var pkg     = getPkg(selectedPkgId);
+      var deposit = calcDeposit(pkg);
+      var ref     = genRef();
+
+      document.getElementById('cf-summary').innerHTML =
+        '<div class="confirm-row"><span class="confirm-row__label">Package</span><span class="confirm-row__value">' + pkg.name + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Price Range</span><span class="confirm-row__value">' + fmtPrice(pkg.price_min, pkg.price_max, pkg.currency) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Deposit Paid</span><span class="confirm-row__value">' + pkg.currency + '\u00a0' + fmt(deposit) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Name</span><span class="confirm-row__value">' + esc(formData.name) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Email</span><span class="confirm-row__value">' + esc(formData.email) + '</span></div>';
+
+      document.getElementById('cf-hubspot').textContent =
+        'Your enquiry has been logged. Reference: ' + ref;
+
+      confirmOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('cf-close').focus();
+    }
+
+    function closeConfirmModal() {
+      confirmOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('lp2-form').reset();
+      document.querySelectorAll('.form-input.error').forEach(function(el){ el.classList.remove('error'); });
+      document.querySelectorAll('.form-error').forEach(function(el){ el.textContent = ''; });
+    }
+
+    document.getElementById('cf-close').addEventListener('click', closeConfirmModal);
+    confirmOverlay.addEventListener('click', function(e){ if(e.target===confirmOverlay) closeConfirmModal(); });
+
+    // Escape key closes any open modal
+    document.addEventListener('keydown', function(e){
+      if (e.key !== 'Escape') return;
+      if (!paymentOverlay.classList.contains('hidden')) closePaymentModal();
+      else if (!confirmOverlay.classList.contains('hidden')) closeConfirmModal();
+    });
+
+    /* ════════════════════════════════════════
+       INIT LP2
+    ════════════════════════════════════════ */
+    renderPkgList();
+    renderPriceSummary();
+
+  })();
+  </script>
+
+</body>
+</html>

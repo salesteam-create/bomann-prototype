@@ -1,0 +1,124 @@
+/* ============================================
+   BOMANN DESIGN TOKENS
+   All CSS variables for the prototype.
+   Every style.css rule references these.
+   Never hardcode colors, spacing, or type
+   outside of this file.
+   ============================================ */
+
+:root {
+
+  /* --- Colors --- */
+  --color-navy:        #2D3F54;   /* Primary — logo color, headings, dark sections */
+  --color-navy-dark:   #1E2D3D;   /* Hover states, deeper navy */
+  --color-navy-light:  #3D5268;   /* Secondary text on dark bg */
+
+  --color-white:       #FFFFFF;
+  --color-off-white:   #F7F7F5;   /* Page background — not pure white */
+  --color-surface:     #FFFFFF;   /* Card backgrounds */
+
+  --color-grey-100:    #F2F2F0;   /* Light backgrounds, tile hover */
+  --color-grey-200:    #E5E5E2;   /* Borders, dividers */
+  --color-grey-400:    #AEAEAD;   /* Placeholder text */
+  --color-grey-600:    #6B6B68;   /* Secondary body text */
+  --color-grey-900:    #1A1A18;   /* Body text, near-black */
+
+  --color-accent:      #C8A97A;   /* Warm gold — use sparingly. CTAs, highlights, "Best Match" tag */
+  --color-accent-dark: #A88A5A;   /* Accent hover */
+
+  --color-success:     #3A7D5E;   /* Confirmation states */
+  --color-error:       #C0392B;   /* Validation errors */
+
+  /* --- Typography --- */
+  --font-family:       'Poppins', sans-serif;
+
+  --font-size-xs:      0.75rem;    /* 12px */
+  --font-size-sm:      0.875rem;   /* 14px */
+  --font-size-base:    1rem;       /* 16px */
+  --font-size-md:      1.125rem;   /* 18px */
+  --font-size-lg:      1.375rem;   /* 22px */
+  --font-size-xl:      1.75rem;    /* 28px */
+  --font-size-2xl:     2.25rem;    /* 36px */
+  --font-size-3xl:     3rem;       /* 48px */
+
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold:600;
+  --font-weight-bold:    700;
+
+  --line-height-tight:   1.2;
+  --line-height-normal:  1.5;
+  --line-height-loose:   1.75;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide:   0.08em;   /* For uppercase labels */
+
+  /* --- Spacing Scale --- */
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+
+  /* --- Layout --- */
+  --container-max:     1200px;
+  --container-narrow:  760px;
+  --container-padding: var(--space-8);
+
+  /* --- Borders --- */
+  --border-radius-sm:  2px;
+  --border-radius-md:  4px;
+  --border-radius-lg:  8px;
+  --border-radius-xl:  12px;
+
+  --border-color:      var(--color-grey-200);
+  --border-width:      1px;
+
+  /* --- Shadows --- */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,0.12);
+  --shadow-xl:   0 24px 64px rgba(0,0,0,0.16);
+
+  /* --- Header --- */
+  --header-height:     72px;
+  --header-bg:         var(--color-white);
+  --header-border:     var(--color-grey-200);
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* --- Z-index --- */
+  --z-header:  100;
+  --z-modal:   200;
+  --z-overlay: 190;
+
+}
+
+/* --- Dark section override (navy bg) --- */
+.section--dark {
+  --color-surface:     var(--color-navy);
+  background-color:    var(--color-navy);
+  color:               var(--color-white);
+}
+
+/* --- Mobile token overrides --- */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--space-5);
+    --font-size-3xl:     2rem;
+    --font-size-2xl:     1.625rem;
+    --header-height:     60px;
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "brand": {
+    "name": "bomann",
+    "tagline": "Custom-made storage from a Norwegian manufacturer",
+    "logo": "/assets/bomann-blue.png"
+  },
+
+  "navigation": {
+    "tab_lp1": "Get Inspired",
+    "tab_lp2": "Lock My Price"
+  },
+
+  "lp1": {
+    "hero": {
+      "headline": "Find Your Perfect Wardrobe",
+      "subtext": "Answer four quick questions and we'll recommend the right solution for your space — based on thousands of completed Bomann projects.",
+      "cta": "Start Now"
+    },
+    "progress_label": "Step {current} of {total}",
+    "questions": [
+      {
+        "id": "door_style",
+        "step": 1,
+        "question": "What door style do you prefer?",
+        "options": [
+          { "value": "sliding", "label": "Sliding", "description": "Space-saving, modern look" },
+          { "value": "hinged", "label": "Hinged", "description": "Classic, full-access opening" },
+          { "value": "glass", "label": "Glass", "description": "Open, light, architectural" }
+        ]
+      },
+      {
+        "id": "finish",
+        "step": 2,
+        "question": "Which finish suits your space?",
+        "options": [
+          { "value": "white_matte", "label": "White Matte", "description": "Clean, timeless, versatile" },
+          { "value": "oak_wood",   "label": "Oak Wood",    "description": "Warm, natural, Scandinavian" },
+          { "value": "dark_grey",  "label": "Dark Grey",   "description": "Bold, contemporary, striking" },
+          { "value": "mirror",     "label": "Mirror",      "description": "Light-expanding, minimal" }
+        ]
+      },
+      {
+        "id": "fittings",
+        "step": 3,
+        "question": "What interior fittings do you need?",
+        "options": [
+          { "value": "basic",    "label": "Basic Shelving",      "description": "Shelves and simple rail" },
+          { "value": "hanging",  "label": "Hanging + Shelves",   "description": "Full-length hanging with shelves" },
+          { "value": "full",     "label": "Full Fitted",         "description": "Drawers, shelves, and hanging" }
+        ]
+      },
+      {
+        "id": "size",
+        "step": 4,
+        "question": "What size are you working with?",
+        "options": [
+          { "value": "small",  "label": "Small",  "description": "100 – 150 cm wide" },
+          { "value": "medium", "label": "Medium", "description": "150 – 200 cm wide" },
+          { "value": "large",  "label": "Large",  "description": "200 – 300 cm wide" }
+        ]
+      }
+    ],
+    "results": {
+      "headline": "Your Recommendations",
+      "subtext": "Based on your answers, here are the Bomann solutions that best match your needs.",
+      "best_match_label": "Best Match",
+      "cta_label": "Lock This Price →",
+      "restart_label": "Start Over"
+    }
+  },
+
+  "packages": [
+    {
+      "id": "essentials",
+      "name": "Essentials",
+      "tagline": "Clean, functional storage done right.",
+      "description": "A straightforward wardrobe with quality Norwegian craftsmanship. Ideal for smaller spaces where function comes first.",
+      "price_min": 12000,
+      "price_max": 18000,
+      "currency": "kr",
+      "match_scores": {
+        "door_style":  { "sliding": 2, "hinged": 3, "glass": 0 },
+        "finish":      { "white_matte": 3, "oak_wood": 2, "dark_grey": 1, "mirror": 1 },
+        "fittings":    { "basic": 3, "hanging": 2, "full": 0 },
+        "size":        { "small": 3, "medium": 2, "large": 0 }
+      }
+    },
+    {
+      "id": "classic",
+      "name": "Classic",
+      "tagline": "The Bomann standard. Timeless and precise.",
+      "description": "Our most popular solution. Combines a refined exterior with a well-organised interior that works for everyday life.",
+      "price_min": 22000,
+      "price_max": 32000,
+      "currency": "kr",
+      "match_scores": {
+        "door_style":  { "sliding": 3, "hinged": 3, "glass": 1 },
+        "finish":      { "white_matte": 3, "oak_wood": 3, "dark_grey": 2, "mirror": 2 },
+        "fittings":    { "basic": 1, "hanging": 3, "full": 2 },
+        "size":        { "small": 1, "medium": 3, "large": 2 }
+      }
+    },
+    {
+      "id": "signature",
+      "name": "Signature",
+      "tagline": "A statement piece. Built for the detail-oriented.",
+      "description": "For larger spaces and those who want the full Bomann experience — complete interior organisation with a premium exterior finish.",
+      "price_min": 38000,
+      "price_max": 55000,
+      "currency": "kr",
+      "match_scores": {
+        "door_style":  { "sliding": 3, "hinged": 2, "glass": 2 },
+        "finish":      { "white_matte": 2, "oak_wood": 2, "dark_grey": 3, "mirror": 3 },
+        "fittings":    { "basic": 0, "hanging": 2, "full": 3 },
+        "size":        { "small": 0, "medium": 2, "large": 3 }
+      }
+    },
+    {
+      "id": "glass_studio",
+      "name": "Glass Studio",
+      "tagline": "Architecture, not just storage.",
+      "description": "Our glass-door collection transforms any room. Frameless precision, full interior customisation, and unmistakable presence.",
+      "price_min": 45000,
+      "price_max": 70000,
+      "currency": "kr",
+      "match_scores": {
+        "door_style":  { "sliding": 2, "hinged": 1, "glass": 3 },
+        "finish":      { "white_matte": 2, "oak_wood": 2, "dark_grey": 3, "mirror": 3 },
+        "fittings":    { "basic": 1, "hanging": 2, "full": 3 },
+        "size":        { "small": 1, "medium": 2, "large": 3 }
+      }
+    }
+  ],
+
+  "lp2": {
+    "hero": {
+      "headline": "Lock In Your Price Today",
+      "subtext": "Secure your Bomann wardrobe with a 20% deposit. No surprises — your quoted price is held while we prepare your personalised offer."
+    },
+    "deposit_rate": 0.20,
+    "deposit_label": "20% deposit to lock your price",
+    "form": {
+      "headline": "Your Details",
+      "fields": [
+        { "id": "name",  "label": "Full Name",     "type": "text",  "placeholder": "Your name",         "required": true },
+        { "id": "email", "label": "Email Address", "type": "email", "placeholder": "your@email.com",    "required": true },
+        { "id": "phone", "label": "Phone Number",  "type": "tel",   "placeholder": "+47 000 00 000",    "required": true }
+      ],
+      "cta": "Lock My Price"
+    },
+    "payment_modal": {
+      "headline": "Confirm Your Deposit",
+      "subtext": "This is a 20% deposit to secure your quoted price range. A Bomann advisor will contact you to confirm measurements and finalise your order.",
+      "card_fields": [
+        { "id": "card_number",  "label": "Card Number",  "placeholder": "0000 0000 0000 0000" },
+        { "id": "expiry",       "label": "Expiry",        "placeholder": "MM / YY" },
+        { "id": "cvc",          "label": "CVC",           "placeholder": "000" }
+      ],
+      "confirm_cta": "Confirm Deposit",
+      "disclaimer": "Simulated payment — no real charge will be made."
+    },
+    "confirmation": {
+      "headline": "You're Confirmed",
+      "subtext": "Your deposit has been received and your price is locked.",
+      "contract_note": "A contract and price confirmation will be sent to your email address.",
+      "advisor_note": "A Bomann advisor will be in touch within 1 business day to discuss measurements and next steps.",
+      "hubspot_banner": "Your enquiry has been logged. Reference: {ref_id}",
+      "close_label": "Done"
+    }
+  }
+}
