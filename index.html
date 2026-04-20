@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Custom-made mirror wardrobes from Bomann — Norway's leading bespoke storage manufacturer. Tailor-made to millimetre precision. Spring offer now available.">
   <title>Bomann — Custom Wardrobes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -308,15 +309,15 @@
 
     /* Specific tile backgrounds */
     .tile-sliding    { background: url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-e1764344278699.jpg') center/cover; }
-    .tile-hinged     { background: url('https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1.jpeg') center/cover; }
-    .tile-glass      { background: url('https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp') center/cover; }
+    .tile-hinged     { background: url('https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1-1.jpeg') center/cover; }
+    .tile-bifold     { background: url('https://www.bomann.no/wp-content/uploads/2025/09/foldedor-svart-1.jpeg') center/cover; }
     .tile-white-matte{ background: #F0EDE8; }
     .tile-oak        { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp') center/cover; }
     .tile-dark-grey  { background: #2A2E34; }
     .tile-mirror     { background: linear-gradient(135deg, #c8c8c8 0%, #e8e8e8 30%, #a8a8a8 55%, #d8d8d8 80%, #b0b0b0 100%); }
-    .tile-basic      { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp') center top/cover; }
-    .tile-hanging    { background: url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-864x1000.jpg') center/cover; }
-    .tile-full       { background: url('https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp') center/cover; }
+    .tile-basic      { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredning-white-3.jpg') center/cover; }
+    .tile-hanging    { background: url('https://www.bomann.no/wp-content/uploads/2025/09/Innredning-9.jpg') center/cover; }
+    .tile-full       { background: url('https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.jpg') center/cover; }
     .tile-small      { background: #3D5268; }
     .tile-medium     { background: #2D3F54; }
     .tile-large      { background: #1E2D3D; }
@@ -456,6 +457,138 @@
       max-width: 520px;
       margin: 0 auto;
     }
+
+    /* ══════════════════════════════════════════
+       LP2 SEO COPY
+    ══════════════════════════════════════════ */
+    .lp2-seo {
+      background: #fff;
+      padding: 48px 2rem;
+      border-bottom: 1px solid #C8A97A;
+    }
+    .lp2-seo__inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #6B6B68;
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════
+       LP2 OFFER SECTION
+    ══════════════════════════════════════════ */
+    .offers-section { padding: 4rem 0 5rem; background: #F7F7F5; }
+    .offers-header  { text-align: center; margin-bottom: 1.25rem; }
+    .offers-title {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #2D3F54;
+      margin-bottom: 0.6rem;
+    }
+    .offers-sub { font-size: 0.95rem; color: #6B6B68; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .scarcity-line {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      justify-content: center;
+      margin: 1.5rem auto 2.5rem;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6B6B68;
+    }
+    .scarcity-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #C0392B;
+      border-radius: 50%;
+    }
+
+    .offer-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .offer-card {
+      background: #fff;
+      border: 1px solid #E5E5E2;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 250ms;
+    }
+    .offer-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); }
+    .offer-card__img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+    }
+    .offer-card__body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .offer-card__name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #2D3F54;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+    .offer-card__interior {
+      font-size: 0.82rem;
+      color: #6B6B68;
+      line-height: 1.55;
+      margin-bottom: 0.4rem;
+    }
+    .offer-card__size {
+      font-size: 0.78rem;
+      color: #6B6B68;
+      margin-bottom: 1rem;
+    }
+    .offer-card__divider {
+      height: 1px; background: #E5E5E2;
+      margin: 0.25rem 0 1rem;
+    }
+    .offer-card__price-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 0.35rem;
+    }
+    .offer-card__price-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6B6B68;
+    }
+    .offer-card__price-original {
+      font-size: 0.95rem;
+      color: #AEAEAD;
+      text-decoration: line-through;
+    }
+    .offer-card__price-offer {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2D3F54;
+      letter-spacing: -0.02em;
+    }
+    .offer-card__badge {
+      display: inline-block;
+      background: #C8A97A;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+      align-self: flex-start;
+      margin: 0.35rem 0 1rem;
+    }
+    .offer-card__meta {
+      font-size: 0.78rem;
+      color: #6B6B68;
+      line-height: 1.6;
+      margin-bottom: 0.35rem;
+    }
+    .offer-card__cta-wrap { margin-top: auto; padding-top: 1rem; }
+
+    /* Offer modal form */
+    .offer-modal-fields { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 0.75rem; }
 
     /* ══════════════════════════════════════════
        LP2 BODY — two-column layout
@@ -646,6 +779,7 @@
     @media (max-width: 900px) {
       .lp2-layout { grid-template-columns: 1fr; }
       .result-cards { grid-template-columns: 1fr; }
+      .offer-cards { grid-template-columns: 1fr; }
       .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     }
     @media (max-width: 768px) {
@@ -758,54 +892,34 @@
   <main id="section-lp2" class="page-section hidden" role="tabpanel">
 
     <!-- Hero -->
-    <section class="lp2-hero">
+    <section class="lp2-hero" style="background:linear-gradient(rgba(30,45,61,0.65),rgba(30,45,61,0.65)),url('https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-20.jpg') center/cover no-repeat;">
       <div class="container--sm">
-        <p class="eyebrow">Price Lock</p>
-        <h1 class="lp2-hero__headline">Lock In Your Price Today</h1>
-        <p class="lp2-hero__sub">Secure your Bomann wardrobe with a 20% deposit. No surprises — your quoted price is held while we prepare your personalised offer.</p>
+        <p class="eyebrow">Spring Offer</p>
+        <h1 class="lp2-hero__headline">Mirror Wardrobes — Now at 50% Off</h1>
+        <p class="lp2-hero__sub">Limited availability. Secure your price with a 20% deposit today.</p>
       </div>
     </section>
 
-    <!-- Body -->
-    <section class="lp2-body">
+    <!-- SEO copy block -->
+    <section class="lp2-seo">
+      <div class="lp2-seo__inner">
+        Bomann's custom-made mirror wardrobes are produced in Norway with millimetre precision — tailored to your exact room dimensions and fitted with the interior organisation that works for your daily life. This spring, we're making three of our most popular configurations available at 50% off the standard price. Each wardrobe is bespoke, Norwegian-made, and delivered through our nationwide dealer network. Select your configuration below and secure your price with a deposit today.
+      </div>
+    </section>
+
+    <!-- Offer cards -->
+    <section class="offers-section" id="offers-section">
       <div class="container">
-        <div class="lp2-layout">
-
-          <!-- Left col: package selector + price summary -->
-          <div>
-            <p class="lp2-col-title">Select Your Package</p>
-            <div class="pkg-list" id="pkg-list"><!-- Injected by JS --></div>
-
-            <p class="lp2-col-title">Price Summary</p>
-            <div class="price-summary" id="price-summary"><!-- Injected by JS --></div>
-          </div>
-
-          <!-- Right col: form -->
-          <div class="form-panel">
-            <p class="lp2-col-title">Your Details</p>
-            <form id="lp2-form" novalidate>
-              <div class="form-fields">
-                <div class="form-field">
-                  <label class="form-label" for="f-name">Full Name</label>
-                  <input class="form-input" id="f-name" type="text" placeholder="Your name" required />
-                  <span class="form-error" id="e-name"></span>
-                </div>
-                <div class="form-field">
-                  <label class="form-label" for="f-email">Email Address</label>
-                  <input class="form-input" id="f-email" type="email" placeholder="your@email.com" required />
-                  <span class="form-error" id="e-email"></span>
-                </div>
-                <div class="form-field">
-                  <label class="form-label" for="f-phone">Phone Number</label>
-                  <input class="form-input" id="f-phone" type="tel" placeholder="+47 000 00 000" required />
-                  <span class="form-error" id="e-phone"></span>
-                </div>
-              </div>
-              <button type="submit" class="btn btn--primary btn--full">Lock My Price</button>
-            </form>
-          </div>
-
+        <div class="offers-header">
+          <p class="eyebrow">Available Configurations</p>
+          <h2 class="offers-title">Choose Your Wardrobe</h2>
+          <p class="offers-sub">All three configurations feature mirror sliding doors. Select the interior that works for your space.</p>
         </div>
+        <div class="scarcity-line">
+          <span class="scarcity-dot"></span>
+          3 of 12 slots remaining this month
+        </div>
+        <div class="offer-cards" id="offer-cards"><!-- Injected by JS --></div>
       </div>
     </section>
 
@@ -817,27 +931,28 @@
   <div class="overlay hidden" id="payment-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-headline">
     <div class="modal">
       <button class="modal-close" id="pm-close" aria-label="Close">&times;</button>
-      <h2 class="modal-headline" id="pm-headline">Confirm Your Deposit</h2>
-      <p class="modal-sub">This is a 20% deposit to secure your quoted price range. A Bomann advisor will contact you to confirm measurements and finalise your order.</p>
+      <h2 class="modal-headline" id="pm-headline">Confirm Your Booking</h2>
+      <p class="modal-sub">Pay a 20% deposit to lock in this offer price. A Bomann advisor will contact you to confirm measurements and finalise your order.</p>
       <div class="modal-summary-box" id="pm-summary"><!-- Injected by JS --></div>
-      <div class="modal-card-fields">
+      <form id="offer-form" class="offer-modal-fields" novalidate>
         <div class="form-field">
-          <label class="form-label" for="cc-num">Card Number</label>
-          <input class="form-input" id="cc-num" type="text" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="cc-number" />
+          <label class="form-label" for="f-name">Full Name</label>
+          <input class="form-input" id="f-name" type="text" placeholder="Your name" required />
+          <span class="form-error" id="e-name"></span>
         </div>
-        <div class="card-row">
-          <div class="form-field">
-            <label class="form-label" for="cc-exp">Expiry</label>
-            <input class="form-input" id="cc-exp" type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" />
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="cc-cvc">CVC</label>
-            <input class="form-input" id="cc-cvc" type="text" placeholder="000" maxlength="3" autocomplete="cc-csc" />
-          </div>
+        <div class="form-field">
+          <label class="form-label" for="f-email">Email Address</label>
+          <input class="form-input" id="f-email" type="email" placeholder="your@email.com" required />
+          <span class="form-error" id="e-email"></span>
         </div>
-      </div>
+        <div class="form-field">
+          <label class="form-label" for="f-phone">Phone Number</label>
+          <input class="form-input" id="f-phone" type="tel" placeholder="+47 000 00 000" required />
+          <span class="form-error" id="e-phone"></span>
+        </div>
+      </form>
       <p class="modal-disclaimer">Simulated payment — no real charge will be made.</p>
-      <button class="btn btn--primary btn--full" id="pm-confirm">Confirm Deposit</button>
+      <button class="btn btn--primary btn--full" id="pm-confirm">Confirm &amp; Pay Deposit</button>
     </div>
   </div>
 
@@ -847,11 +962,11 @@
   <div class="overlay hidden" id="confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="cf-headline">
     <div class="modal modal--confirm">
       <div class="confirm-icon">&#10003;</div>
-      <h2 class="modal-headline" id="cf-headline">You're Confirmed</h2>
-      <p class="modal-sub">Your deposit has been received and your price is locked.</p>
+      <h2 class="modal-headline" id="cf-headline">Price Locked</h2>
+      <p class="modal-sub">Your deposit has been received and your offer price is locked.</p>
       <div class="confirm-summary" id="cf-summary"><!-- Injected by JS --></div>
-      <p class="confirm-note">A contract and price confirmation will be sent to your email address.</p>
-      <p class="confirm-note">A Bomann advisor will be in touch within 1 business day to discuss measurements and next steps.</p>
+      <p class="confirm-note">A Bomann advisor will call you within 1 business day to confirm measurements and finalise your order.</p>
+      <p class="confirm-note">A contract will be sent to your email.</p>
       <div class="hubspot-banner" id="cf-hubspot"></div>
       <button class="btn btn--primary" id="cf-close">Done</button>
     </div>
@@ -873,7 +988,7 @@
         price_min: 12000, price_max: 18000, currency: 'kr',
         img: 'https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1.jpeg',
         scores: {
-          door_style:  { sliding: 2, hinged: 3, glass: 0 },
+          door_style:  { sliding: 2, hinged: 3, bifold: 0 },
           finish:      { white_matte: 3, oak_wood: 2, dark_grey: 1, mirror: 1 },
           fittings:    { basic: 3, hanging: 2, full: 0 },
           size:        { small: 3, medium: 2, large: 0 }
@@ -886,7 +1001,7 @@
         price_min: 22000, price_max: 32000, currency: 'kr',
         img: 'https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-21-1-e1764344278699.jpg',
         scores: {
-          door_style:  { sliding: 3, hinged: 3, glass: 1 },
+          door_style:  { sliding: 3, hinged: 3, bifold: 1 },
           finish:      { white_matte: 3, oak_wood: 3, dark_grey: 2, mirror: 2 },
           fittings:    { basic: 1, hanging: 3, full: 2 },
           size:        { small: 1, medium: 3, large: 2 }
@@ -899,23 +1014,23 @@
         price_min: 38000, price_max: 55000, currency: 'kr',
         img: 'https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.webp',
         scores: {
-          door_style:  { sliding: 3, hinged: 2, glass: 2 },
+          door_style:  { sliding: 3, hinged: 2, bifold: 2 },
           finish:      { white_matte: 2, oak_wood: 2, dark_grey: 3, mirror: 3 },
           fittings:    { basic: 0, hanging: 2, full: 3 },
           size:        { small: 0, medium: 2, large: 3 }
         }
       },
       {
-        id: 'glass_studio', name: 'Glass Studio',
-        tagline: 'Architecture, not just storage.',
-        description: 'Our glass-door collection transforms any room. Frameless precision, full interior customisation, and unmistakable presence.',
-        price_min: 45000, price_max: 70000, currency: 'kr',
-        img: 'https://www.bomann.no/wp-content/uploads/2025/09/upscalemedia-transformed.webp',
+        id: 'nordic', name: 'Nordic',
+        tagline: 'Simple lines. Lasting quality.',
+        description: 'A refined bi-fold solution for spaces that need full access without compromise. Clean, precise, and built to last.',
+        price_min: 18000, price_max: 28000, currency: 'kr',
+        img: 'https://www.bomann.no/wp-content/uploads/2025/09/foldedor-svart-1.jpeg',
         scores: {
-          door_style:  { sliding: 2, hinged: 1, glass: 3 },
-          finish:      { white_matte: 2, oak_wood: 2, dark_grey: 3, mirror: 3 },
-          fittings:    { basic: 1, hanging: 2, full: 3 },
-          size:        { small: 1, medium: 2, large: 3 }
+          door_style:  { sliding: 1, hinged: 2, bifold: 3 },
+          finish:      { white_matte: 3, oak_wood: 2, dark_grey: 2, mirror: 1 },
+          fittings:    { basic: 2, hanging: 3, full: 2 },
+          size:        { small: 3, medium: 3, large: 1 }
         }
       }
     ];
@@ -929,7 +1044,7 @@
         options: [
           { value: 'sliding', label: 'Sliding',  desc: 'Space-saving, modern look',     bgClass: 'tile-sliding' },
           { value: 'hinged',  label: 'Hinged',   desc: 'Classic, full-access opening',  bgClass: 'tile-hinged'  },
-          { value: 'glass',   label: 'Glass',    desc: 'Open, light, architectural',    bgClass: 'tile-glass'   }
+          { value: 'bifold',  label: 'Bi-fold',  desc: 'Full access, compact swing',    bgClass: 'tile-bifold'  }
         ]
       },
       {
@@ -968,11 +1083,45 @@
       }
     ];
 
+    /* ── Offer packages (LP2 spring offer) ── */
+    const offerPackages = [
+      {
+        id: 'mirror_essential',
+        name: 'Mirror Essential',
+        interior: 'Basic shelving — shelves and hanging rail',
+        size: '150 cm wide',
+        price_original: 24000,
+        price_offer: 12000,
+        deposit: 2400,
+        image: 'https://www.bomann.no/wp-content/uploads/2025/09/innredning-white-3.jpg'
+      },
+      {
+        id: 'mirror_classic',
+        name: 'Mirror Classic',
+        interior: 'Hanging + shelves — full-length rail with shelf modules',
+        size: '200 cm wide',
+        price_original: 36000,
+        price_offer: 18000,
+        deposit: 3600,
+        image: 'https://www.bomann.no/wp-content/uploads/2025/09/Innredning-9.jpg'
+      },
+      {
+        id: 'mirror_signature',
+        name: 'Mirror Signature',
+        interior: 'Full fitted — drawers, shelves, and hanging',
+        size: '250 cm wide',
+        price_original: 56000,
+        price_offer: 28000,
+        deposit: 5600,
+        image: 'https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.jpg'
+      }
+    ];
+
     /* ── State ── */
-    let answers       = {};
-    let currentStep   = 0;
-    let selectedPkgId = PACKAGES[0].id;
-    let formData      = {};
+    let answers        = {};
+    let currentStep    = 0;
+    let selectedOfferId = null;
+    let formData       = {};
 
     /* ── Helpers ── */
     function fmt(n) {
@@ -1179,15 +1328,13 @@
 
       resultsSection.style.display = '';
 
-      // Lock This Price buttons
+      // Lock This Price buttons → switch to LP2 and scroll to offer cards
       resultsSection.querySelectorAll('[data-pkg]').forEach(function(btn){
         btn.addEventListener('click', function(){
-          selectedPkgId = btn.dataset.pkg;
           switchTab('lp2');
-          renderPkgList();
-          renderPriceSummary();
           setTimeout(function(){
-            document.getElementById('pkg-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            var sec = document.getElementById('offers-section');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 350);
         });
       });
@@ -1209,67 +1356,48 @@
     }
 
     /* ════════════════════════════════════════
-       LP2 — PACKAGE LIST
+       LP2 — OFFER CARDS
     ════════════════════════════════════════ */
-    function renderPkgList() {
-      var html = PACKAGES.map(function(pkg){
-        var sel = pkg.id === selectedPkgId;
-        return '<button class="pkg-card' + (sel ? ' selected' : '') + '" data-pkg="' + pkg.id + '" type="button" aria-pressed="' + sel + '">' +
-          '<div class="pkg-card__radio"></div>' +
-          '<div class="pkg-card__body">' +
-            '<p class="pkg-card__name">' + pkg.name + '</p>' +
-            '<p class="pkg-card__tagline">' + pkg.tagline + '</p>' +
+    function getOffer(id) { return offerPackages.find(function(o){ return o.id === id; }); }
+
+    function renderOfferCards() {
+      var html = offerPackages.map(function(o){
+        return '<article class="offer-card">' +
+          '<div class="offer-card__img" style="background-image:url(\'' + o.image + '\')"></div>' +
+          '<div class="offer-card__body">' +
+            '<p class="offer-card__name">' + esc(o.name) + '</p>' +
+            '<p class="offer-card__interior">' + esc(o.interior) + '</p>' +
+            '<p class="offer-card__size">' + esc(o.size) + '</p>' +
+            '<div class="offer-card__divider"></div>' +
+            '<div class="offer-card__price-row">' +
+              '<span class="offer-card__price-label">Standard Price</span>' +
+              '<span class="offer-card__price-original">kr\u00a0' + fmt(o.price_original) + '</span>' +
+            '</div>' +
+            '<div class="offer-card__price-row">' +
+              '<span class="offer-card__price-label">Offer Price</span>' +
+              '<span class="offer-card__price-offer">kr\u00a0' + fmt(o.price_offer) + '</span>' +
+            '</div>' +
+            '<span class="offer-card__badge">50% Off</span>' +
+            '<div class="offer-card__divider"></div>' +
+            '<p class="offer-card__meta">Norwegian made · Bespoke sizing</p>' +
+            '<p class="offer-card__meta">Advisor calls within 1 business day</p>' +
+            '<div class="offer-card__cta-wrap">' +
+              '<button class="btn btn--accent btn--full" data-offer="' + o.id + '">Book This Price</button>' +
+            '</div>' +
           '</div>' +
-          '<span class="pkg-card__price">' + pkg.currency + '\u00a0' + fmt(pkg.price_min) + '+</span>' +
-          '</button>';
+        '</article>';
       }).join('');
-      var list = document.getElementById('pkg-list');
-      list.innerHTML = html;
-      list.querySelectorAll('.pkg-card').forEach(function(card){
-        card.addEventListener('click', function(){
-          selectedPkgId = card.dataset.pkg;
-          list.querySelectorAll('.pkg-card').forEach(function(c){
-            var s = c.dataset.pkg === selectedPkgId;
-            c.classList.toggle('selected', s);
-            c.setAttribute('aria-pressed', s);
-          });
-          renderPriceSummary();
-        });
+      var wrap = document.getElementById('offer-cards');
+      wrap.innerHTML = html;
+      wrap.querySelectorAll('[data-offer]').forEach(function(btn){
+        btn.addEventListener('click', function(){ bookOffer(btn.dataset.offer); });
       });
     }
 
-    function renderPriceSummary() {
-      var pkg     = getPkg(selectedPkgId);
-      var deposit = calcDeposit(pkg);
-      var mid     = (pkg.price_min + pkg.price_max) / 2;
-      document.getElementById('price-summary').innerHTML =
-        '<div class="price-summary__row">' +
-          '<span class="price-summary__label">Package</span>' +
-          '<span class="price-summary__value">' + pkg.name + '</span>' +
-        '</div>' +
-        '<div class="price-summary__row">' +
-          '<span class="price-summary__label">Price Range</span>' +
-          '<span class="price-summary__value">' + fmtPrice(pkg.price_min, pkg.price_max, pkg.currency) + '</span>' +
-        '</div>' +
-        '<div class="price-summary__row">' +
-          '<span class="price-summary__label">20% Deposit</span>' +
-          '<span class="price-summary__value price-summary__value--accent">' + pkg.currency + '\u00a0' + fmt(deposit) + '</span>' +
-        '</div>';
-    }
-
-    /* ════════════════════════════════════════
-       LP2 — FORM
-    ════════════════════════════════════════ */
-    document.getElementById('lp2-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!validateForm()) return;
-      formData = {
-        name:  document.getElementById('f-name').value.trim(),
-        email: document.getElementById('f-email').value.trim(),
-        phone: document.getElementById('f-phone').value.trim()
-      };
+    function bookOffer(id) {
+      selectedOfferId = id;
       openPaymentModal();
-    });
+    }
 
     function validateForm() {
       var ok = true;
@@ -1298,24 +1426,34 @@
     }
 
     /* ════════════════════════════════════════
-       PAYMENT MODAL
+       PAYMENT MODAL (offer)
     ════════════════════════════════════════ */
     var paymentOverlay = document.getElementById('payment-overlay');
 
     function openPaymentModal() {
-      var pkg     = getPkg(selectedPkgId);
-      var deposit = calcDeposit(pkg);
+      var o = getOffer(selectedOfferId);
+      if (!o) return;
       document.getElementById('pm-summary').innerHTML =
-        '<p class="modal-summary-box__pkg">Package</p>' +
-        '<p class="modal-summary-box__name">' + pkg.name + '</p>' +
-        '<p class="modal-summary-box__amt-label">Deposit Amount</p>' +
-        '<p class="modal-summary-box__amt">' + pkg.currency + '\u00a0' + fmt(deposit) + '</p>';
-      document.getElementById('cc-num').value = '';
-      document.getElementById('cc-exp').value = '';
-      document.getElementById('cc-cvc').value = '';
+        '<p class="modal-summary-box__pkg">Configuration</p>' +
+        '<p class="modal-summary-box__name">' + esc(o.name) + '</p>' +
+        '<p class="offer-card__interior" style="margin-bottom:0.8rem;">' + esc(o.interior) + '</p>' +
+        '<p class="modal-summary-box__amt-label">Offer Price</p>' +
+        '<p class="modal-summary-box__amt" style="margin-bottom:0.6rem;">kr\u00a0' + fmt(o.price_offer) + '</p>' +
+        '<p class="modal-summary-box__amt-label">Deposit Due Today</p>' +
+        '<p class="modal-summary-box__amt">kr\u00a0' + fmt(o.deposit) + '</p>';
+      // reset form fields
+      ['f-name','f-email','f-phone'].forEach(function(id){
+        var el = document.getElementById(id);
+        if (el) { el.value = ''; el.classList.remove('error'); }
+      });
+      ['e-name','e-email','e-phone'].forEach(function(id){
+        var el = document.getElementById(id);
+        if (el) el.textContent = '';
+      });
       paymentOverlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      document.getElementById('cc-num').focus();
+      var nameEl = document.getElementById('f-name');
+      if (nameEl) nameEl.focus();
     }
 
     function closePaymentModal() {
@@ -1326,20 +1464,15 @@
     document.getElementById('pm-close').addEventListener('click', closePaymentModal);
     paymentOverlay.addEventListener('click', function(e){ if(e.target===paymentOverlay) closePaymentModal(); });
 
-    // Card field formatting
-    document.getElementById('cc-num').addEventListener('input', function(){
-      var v = this.value.replace(/\D/g,'').substring(0,16);
-      this.value = v.replace(/(.{4})/g,'$1 ').trim();
-    });
-    document.getElementById('cc-exp').addEventListener('input', function(){
-      var v = this.value.replace(/\D/g,'').substring(0,4);
-      if (v.length >= 3) v = v.substring(0,2) + ' / ' + v.substring(2);
-      this.value = v;
-    });
-
     document.getElementById('pm-confirm').addEventListener('click', function(){
+      if (!validateForm()) return;
+      formData = {
+        name:  document.getElementById('f-name').value.trim(),
+        email: document.getElementById('f-email').value.trim(),
+        phone: document.getElementById('f-phone').value.trim()
+      };
       closePaymentModal();
-      showConfirmation();
+      confirmOffer();
     });
 
     /* ════════════════════════════════════════
@@ -1347,20 +1480,19 @@
     ════════════════════════════════════════ */
     var confirmOverlay = document.getElementById('confirm-overlay');
 
-    function showConfirmation() {
-      var pkg     = getPkg(selectedPkgId);
-      var deposit = calcDeposit(pkg);
-      var ref     = genRef();
+    function confirmOffer() {
+      var o   = getOffer(selectedOfferId);
+      var ref = genRef();
 
       document.getElementById('cf-summary').innerHTML =
-        '<div class="confirm-row"><span class="confirm-row__label">Package</span><span class="confirm-row__value">' + pkg.name + '</span></div>' +
-        '<div class="confirm-row"><span class="confirm-row__label">Price Range</span><span class="confirm-row__value">' + fmtPrice(pkg.price_min, pkg.price_max, pkg.currency) + '</span></div>' +
-        '<div class="confirm-row"><span class="confirm-row__label">Deposit Paid</span><span class="confirm-row__value">' + pkg.currency + '\u00a0' + fmt(deposit) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Configuration</span><span class="confirm-row__value">' + esc(o.name) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Offer Price</span><span class="confirm-row__value">kr\u00a0' + fmt(o.price_offer) + '</span></div>' +
+        '<div class="confirm-row"><span class="confirm-row__label">Deposit Paid</span><span class="confirm-row__value">kr\u00a0' + fmt(o.deposit) + '</span></div>' +
         '<div class="confirm-row"><span class="confirm-row__label">Name</span><span class="confirm-row__value">' + esc(formData.name) + '</span></div>' +
         '<div class="confirm-row"><span class="confirm-row__label">Email</span><span class="confirm-row__value">' + esc(formData.email) + '</span></div>';
 
       document.getElementById('cf-hubspot').textContent =
-        'Your enquiry has been logged. Reference: ' + ref;
+        'Your booking has been logged. Reference: ' + ref;
 
       confirmOverlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -1370,7 +1502,6 @@
     function closeConfirmModal() {
       confirmOverlay.classList.add('hidden');
       document.body.style.overflow = '';
-      document.getElementById('lp2-form').reset();
       document.querySelectorAll('.form-input.error').forEach(function(el){ el.classList.remove('error'); });
       document.querySelectorAll('.form-error').forEach(function(el){ el.textContent = ''; });
     }
@@ -1388,8 +1519,7 @@
     /* ════════════════════════════════════════
        INIT LP2
     ════════════════════════════════════════ */
-    renderPkgList();
-    renderPriceSummary();
+    renderOfferCards();
 
   })();
   </script>

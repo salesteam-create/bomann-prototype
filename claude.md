@@ -178,3 +178,217 @@ Pull from `content.json`
 3. Preserve all existing Bomann CDN image URLs
 4. Test that LP1 → LP2 handoff still works after any changes
 5. Keep all styles inside the `<style>` block, all logic inside the `<script>` block
+
+---
+
+## Pending Changes — Implement These Now
+
+Read `index.html` fully first. Then make the following targeted changes in order.
+
+---
+
+### CHANGE 1 — LP1: Fix Door Style options
+
+**What to change:** Q1 (door style) currently has 3 options: Sliding, Hinged, Glass. Remove Glass. Replace with Bi-fold.
+
+**HTML — find the Q1 options grid and replace the Glass tile with:**
+```html
+<div class="option-tile" data-q="door_style" data-v="bifold" onclick="selectOption(this)">
+  <div class="option-tile-bg" style="background-image:url('https://www.bomann.no/wp-content/uploads/2025/09/foldedor-svart-1.jpeg')"></div>
+  <div class="option-tile-overlay"></div>
+  <div class="option-check"></div>
+  <div class="option-tile-content">
+    <div class="option-tile-name">Bi-fold</div>
+    <div class="option-tile-desc">Full access, compact swing</div>
+  </div>
+</div>
+```
+
+**Also update the Hinged tile image** to use the white hinged door (cleaner photo):
+```
+https://www.bomann.no/wp-content/uploads/2025/09/foldedor-hvit-1-1.jpeg
+```
+
+**JS — in the `packages` array**, remove all `glass: N` score entries and replace with `bifold: N` using the same score values glass had. Also remove the `glass_studio` package entirely. Replace it with a new `Nordic` package:
+```js
+{
+  id: 'nordic',
+  name: 'Nordic',
+  tagline: 'Simple lines. Lasting quality.',
+  description: 'A refined bi-fold solution for spaces that need full access without compromise. Clean, precise, and built to last.',
+  price_min: 18000, price_max: 28000,
+  image: 'https://www.bomann.no/wp-content/uploads/2025/09/foldedor-svart-1.jpeg',
+  scores: { door_style:{sliding:1,hinged:2,bifold:3}, finish:{white_matte:3,oak_wood:2,dark_grey:2,mirror:1}, fittings:{basic:2,hanging:3,full:2}, size:{small:3,medium:3,large:1} }
+}
+```
+
+---
+
+### CHANGE 2 — LP1: Fix Interior Fittings images
+
+**What to change:** Q3 (interior fittings) currently shows irrelevant room/door images. Replace all three tile backgrounds with actual interior shots.
+
+**Find the Q3 options grid. Update the background images as follows:**
+
+- Basic Shelving tile → `https://www.bomann.no/wp-content/uploads/2025/09/innredning-white-3.jpg`
+- Hanging + Shelves tile → `https://www.bomann.no/wp-content/uploads/2025/09/Innredning-9.jpg`
+- Full Fitted tile → `https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.jpg`
+
+Do not change anything else about Q3 — only the `background-image` URLs inside the `.option-tile-bg` divs.
+
+---
+
+### CHANGE 3 — LP1: Update Q1 scoring references
+
+In the `packages` array scores, find every instance of `glass:` under `door_style` and rename it to `bifold:`. Keep the numeric values identical. This ensures the scoring logic doesn't break when a user selects Bi-fold.
+
+---
+
+### CHANGE 4 — Full LP2 rework
+
+LP2 is no longer a generic package selector. It is a **campaign/offer landing page**. The concept: Bomann has a spring offer running on a specific product (for this demo: mirror wardrobes). The page presents 3 pre-defined configurations upfront. The customer picks one, pays a deposit, done. No configuration questions.
+
+**This is a template** — the product and offer can be swapped out. Mirror wardrobes is just the demo content.
+
+#### 4a — LP2 Hero
+
+Replace the existing LP2 hero content with:
+- Background image: `https://www.bomann.no/wp-content/uploads/2018/09/skyvedor-ai-20.jpg`
+- Gold label: `SPRING OFFER`
+- Headline: `Mirror Wardrobes — Now at 50% Off`
+- Subtext: `Limited availability. Secure your price with a 20% deposit today.`
+- No CTA button in hero — the offer cards below are the CTA
+
+#### 4b — LP2 SEO copy block
+
+Add a new section directly below the hero (white background, centered, max-width 720px, padding 48px). Content:
+
+```
+Bomann's custom-made mirror wardrobes are produced in Norway with millimetre precision — 
+tailored to your exact room dimensions and fitted with the interior organisation that works 
+for your daily life. This spring, we're making three of our most popular configurations 
+available at 50% off the standard price. Each wardrobe is bespoke, Norwegian-made, and 
+delivered through our nationwide dealer network. Select your configuration below and secure 
+your price with a deposit today.
+```
+
+Font size 0.95rem, color `var(--grey-600)`, line-height 1.8. Add a thin `1px` gold bottom border below this section as a divider.
+
+#### 4c — Replace LP2 package selector with offer cards
+
+Remove the existing two-column layout (package-cards list + form). Replace the entire `lp2-section` with a new section structured as follows:
+
+**Section header:**
+- Small gold label: `AVAILABLE CONFIGURATIONS`
+- Headline: `Choose Your Wardrobe`
+- Subtext: `All three configurations feature mirror sliding doors. Select the interior that works for your space.`
+
+**Scarcity line** (below header, before cards):
+```html
+<div class="scarcity-line">
+  <span class="scarcity-dot"></span>
+  3 of 12 slots remaining this month
+</div>
+```
+Style: small centred text, `var(--grey-600)`, with a small red dot (`8px`, `background:#C0392B`, `border-radius:50%`) before the text.
+
+**3 offer cards** in a 3-column grid (stack to 1 col on mobile). Each card:
+
+```
+[Interior image — open wardrobe, 220px tall]
+[White card body]
+  Package name (bold, navy)
+  Interior description (small, grey)
+  Size specification
+  ─────────────────────
+  STANDARD PRICE   kr XX 000  ← strikethrough, grey
+  OFFER PRICE      kr XX 000  ← large, navy, bold
+  50% OFF badge               ← gold background, white text
+  ─────────────────────
+  Norwegian made · Bespoke sizing
+  Advisor calls within 1 business day
+  ─────────────────────
+  [Book This Price] button    ← full width, accent gold
+```
+
+**The 3 offer configurations (hardcode these in JS as `offerPackages` array):**
+
+```js
+const offerPackages = [
+  {
+    id: 'mirror_essential',
+    name: 'Mirror Essential',
+    interior: 'Basic shelving — shelves and hanging rail',
+    size: '150 cm wide',
+    price_original: 24000,
+    price_offer: 12000,
+    deposit: 2400,
+    image: 'https://www.bomann.no/wp-content/uploads/2025/09/innredning-white-3.jpg'
+  },
+  {
+    id: 'mirror_classic',
+    name: 'Mirror Classic',
+    interior: 'Hanging + shelves — full-length rail with shelf modules',
+    size: '200 cm wide',
+    price_original: 36000,
+    price_offer: 18000,
+    deposit: 3600,
+    image: 'https://www.bomann.no/wp-content/uploads/2025/09/Innredning-9.jpg'
+  },
+  {
+    id: 'mirror_signature',
+    name: 'Mirror Signature',
+    interior: 'Full fitted — drawers, shelves, and hanging',
+    size: '250 cm wide',
+    price_original: 56000,
+    price_offer: 28000,
+    deposit: 5600,
+    image: 'https://www.bomann.no/wp-content/uploads/2025/09/innredrning-eik.jpg'
+  }
+];
+```
+
+**On "Book This Price" click:** open a modal (reuse existing modal styles) with:
+- Selected package name
+- Interior description
+- Offer price + deposit amount (prominent)
+- 3 form fields: Name, Email, Phone
+- "Confirm & Pay Deposit" button
+- Disclaimer: "Simulated payment — no real charge will be made."
+
+On confirm → show confirmation modal with:
+- "Price Locked" headline
+- Package name + offer price + deposit paid
+- Ref ID (format: `BMN-XXXXX`)
+- "A Bomann advisor will call you within 1 business day to confirm measurements and finalise your order."
+- "A contract will be sent to your email."
+
+#### 4d — Remove old LP2 JS functions that are no longer needed
+
+Remove or disable: `renderPackageCards()`, `selectPackage()`, `openPaymentModal()` (the old version). Replace with new functions: `renderOfferCards()`, `bookOffer(id)`, `confirmOffer()`.
+
+Call `renderOfferCards()` on page load instead of `renderPackageCards()`.
+
+#### 4e — LP1 → LP2 handoff
+
+The "Lock This Price →" button on LP1 result cards currently calls `lockThisPrice(pkgId)` which switches to LP2 and pre-selects a package. Since LP2 no longer has a generic package selector, update `lockThisPrice()` to simply switch to the LP2 tab and scroll to the offer cards. Do not try to pre-select anything — the user will choose their offer configuration on LP2.
+
+---
+
+### CHANGE 5 — Add meta description for SEO
+
+In the `<head>`, add:
+```html
+<meta name="description" content="Custom-made mirror wardrobes from Bomann — Norway's leading bespoke storage manufacturer. Tailor-made to millimetre precision. Spring offer now available.">
+```
+
+---
+
+### After all changes — verify these things work:
+1. LP1 Q1 shows Sliding / Hinged / Bi-fold with correct images
+2. LP1 Q3 shows interior images (not door/room images)
+3. LP1 scoring produces 3 results with no glass references
+4. LP2 shows 3 offer cards with correct prices and images
+5. "Book This Price" opens modal, confirm shows ref ID
+6. LP1 → LP2 tab handoff still works
+7. Mobile layout is not broken
